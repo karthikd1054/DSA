@@ -15,16 +15,6 @@ class LinkedList():
             current.next = newNode            
         else:
             self.head = newNode
-    
-    def printLL(self):
-        if self.head:
-            current = self.head
-            print(current.value)
-            while current.next:
-                current = current.next
-                print(current.value)
-        else:
-            print("Linked List is Empty")
 
     def insertNode(self, position, newNode):
         current  = self.head
@@ -42,6 +32,49 @@ class LinkedList():
                 i = i+1
             previous.next = newNode
             newNode.next = current
+
+    def searchValue(self, value):
+        if self.head == None:
+            print("Linked List is Empty")
+            return 0
+        else:
+            if self.head.value == value:
+                print(self.head.value)
+            else:
+                current = self.head
+                i = 0
+                while current.value != value:
+                    current = current.next
+                print(current.value)
+
+    def searchNode(self, position):
+        if self.head == None:
+            print("Linked List is Empty")
+            return 0
+        else:
+            current = self.head
+            if position == 1:
+                print("Value at Node "+str(position)+": "+self.head.value)
+            else:
+                i = 0
+                while i<position:
+                    if current.next:
+                        current = current.next
+                        i = i+1
+                    else:
+                        print("Node out of bound\n")
+                        return 0
+                print("Value at Node "+str(position)+": "+current.value)
+
+    def printLL(self):
+        if self.head:
+            current = self.head
+            print(current.value)
+            while current.next:
+                current = current.next
+                print(current.value)
+        else:
+            print("Linked List is Empty")
 
     def deleteValue(self, value):
         current = self.head
@@ -97,13 +130,13 @@ while True:
     elif inp == 2:
         ll.insertNode(int(input("Enter the position to insert the new Node\n")),Node(input("Enter the value to be inserted\n")))
     elif inp == 3:
-        continue
+        ll.searchValue(int(input("Enter the Value to be searched\n")))
     elif inp == 4:
-        continue
+        ll.searchNode(int(input("Enter the Node to be searched\n")))
     elif inp == 5:
-        ll.deleteValue(input("\nEnter the Value to be deleted\n"))
+        ll.deleteValue(input("Enter the Value to be deleted\n"))
     elif inp == 6:
-        ll.deleteNode(int(input("\nEnter the Node to be delete\n")))
+        ll.deleteNode(int(input("Enter the Node to be delete\n")))
     elif inp == 7:
         ll.clearLL()
     elif inp == 8:
